@@ -7,6 +7,10 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     height: 100vh;
+    background-image: url("../images/background/background.jpg");
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
     overflow-x: hidden;
   }
   
@@ -21,7 +25,7 @@ const StyledWrapper = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background: ${({ theme }) => theme.colors.dark};
+        background: ${({ theme }) => theme.colors.light};
         position: relative;
 `
 

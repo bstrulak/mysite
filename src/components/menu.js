@@ -17,16 +17,20 @@ export default class Menu extends React.Component {
         render() {
                 const Header = styled.header`
                         position: fixed;
-                        background-color: ${theme} => theme.colors.light};
+                        background-color: ${({ theme }) => theme.colors.light};
                         color: ${({ theme }) => theme.colors.dark};
                         width: 100%;
                         display: grid;
                         grid-template-columns: 200px 0 auto;
                         grid-template-rows: ${this.state.showMenu ? '60px 0' : '60px 165px'};
                         align-items: center;
-                        grid-template-areas:
-                                'logo icon icon'
-                                'menu menu menu';
+                        grid-template-areas: 'logo icon icon' 'menu menu menu';
+
+                        ${({ theme }) => theme.media.desktop} {
+                                background-color: ${({ theme }) => theme.colors.bgresp};
+                                grid-template-rows: 60px 0;
+                                grid-template-areas: 'logo icon menu';
+                        }
                 `
 
                 const Logo = styled.div`
@@ -50,6 +54,9 @@ export default class Menu extends React.Component {
                         font-weight: lighter;
                         text-decoration: none;
                         color: ${({ theme }) => theme.colors.dark};
+                        ${({ theme }) => theme.media.desktop} {
+                                color: ${({ theme }) => theme.colors.light};
+                        }
                 `
 
                 const Icon = styled(FaBars)`
@@ -58,7 +65,9 @@ export default class Menu extends React.Component {
                         margin-right: 1em;
                         text-align: right;
                         font-size: 1.5rem;
-                        color: ${({ theme }) => theme.colors.dark};
+                        ${({ theme }) => theme.media.desktop} {
+                                opacity: 0;
+                        }
                 `
 
                 const Nav = styled.nav`
@@ -69,15 +78,28 @@ export default class Menu extends React.Component {
                         display: flex;
                         justify-content: space-between;
                         transform: scale(1, ${this.state.showMenu ? '0' : '1'});
+                        ${({ theme }) => theme.media.desktop} {
+                                transform: scale(1, 1);
+                                justify-content: flex-end;
+                                align-items: center;
+                                width: 100%;
+                                height: 100%;
+                                padding-right: 20px;
+                        }
                 `
 
                 const MenuList = styled.ul`
                         margin: 0;
-                        padding: 0;
+                        padding-top: 10px;
                         list-style: none;
                 `
 
-                const ListItem = styled.li``
+                const ListItem = styled.li`
+                        ${({ theme }) => theme.media.desktop} {
+                                display: inline-block;
+                                padding: 0 10px;
+                        }
+                `
                 const MenuLink = styled(Link)`
                         color: ${({ theme }) => theme.colors.dark};
                         text-decoration: none;
@@ -85,6 +107,10 @@ export default class Menu extends React.Component {
                         font-size: 0.9rem;
                         :hover {
                                 color: ${({ theme }) => theme.colors.orange};
+                        }
+
+                        ${({ theme }) => theme.media.desktop} {
+                                color: ${({ theme }) => theme.colors.light};
                         }
                 `
                 return (
