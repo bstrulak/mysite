@@ -48,7 +48,7 @@ export default class Menu extends React.Component {
                             opacity: 0;
                             transition: opacity 2s ease-in-out;
                         }
-
+                        
                         .slide-radio1:checked ~ .slider-pagination .page1,
                         .slide-radio2:checked ~ .slider-pagination .page2,
                         .slide-radio3:checked ~ .slider-pagination .page3,
@@ -108,7 +108,6 @@ export default class Menu extends React.Component {
                 `
                 const Slider = styled.div`
                 width: 100%;
-                height: 100vh;
                 position: absolute;
                 left: 0;
                 top: 0;
