@@ -36,16 +36,16 @@ const Image = props => (
                                 <Img
                                         alt={props.alt}
                                         sizes={imageSizes}
-                                        style={
-                                                ({ padding: 0 },
-                                                { top: 0 },
-                                                { left: 0 },
-                                                { right: 0 },
-                                                { objectFit: 'cover' },
-                                                { objectPosition: 'center center' },
-                                                { height: `${100  }vh` },
-                                                { width: `${100  }%` })
-                                        }
+                                        style={{
+                                                position: 'absolute',
+                                                top: 0,
+                                                left: 0,
+                                                height: '100%',
+                                                width: '100%',
+                                                objectFit: 'cover !important',
+                                                objectPosition: '0% 0% !important',
+                                                transition: 'opacity 20s !important',
+                                        }}
                                 />
                         )
                 }}

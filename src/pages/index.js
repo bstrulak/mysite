@@ -9,14 +9,8 @@ import BgSlider from '../components/bgslider'
 const IndexPage = props => (
         <Layout>
                 <Menu />
-
                 <BgSlider />
-                
         </Layout>
 )
-/*
 
- */
 export default IndexPage
-
-
