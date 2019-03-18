@@ -1,7 +1,5 @@
 import React from 'react'
-import { Link, PageRenderer } from 'gatsby'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
 import { theme } from '../utils/theme'
 import Image from './image'
@@ -123,7 +121,7 @@ export default class Menu extends React.Component {
                 
                 
                 `
-                const Image = styled.img`
+               /* const RespImage = styled(Image)`
                 padding: 0;
                 top: 0;
                 left: 0;
@@ -134,7 +132,7 @@ export default class Menu extends React.Component {
                 height: 100vh;
                 width: 100%;
                 `
-
+*/
                 return (
                         <Wrapper>
                                 <input type="radio" name="slider" id="slider_1" className="slide-radio1" />
@@ -155,10 +153,10 @@ export default class Menu extends React.Component {
                                                 <FaAngleRight />
                                         </a>
                                 </SliderArrows>
-                                <Slider className="slider slide-1"><Image src="images/background/bg1.jpg"  /></Slider>
-                                <Slider className="slider slide-2"><Image src="images/background/bg2.jpg"  /></Slider>
-                                <Slider className="slider slide-3"><Image src="images/background/bg3.jpg"  /></Slider>
-                                <Slider className="slider slide-4"><Image src="images/background/bg4.jpg"  /></Slider>
+                                <Slider className="slider slide-1"><Image filename="bg1.jpg"  /></Slider>
+                                <Slider className="slider slide-2"><Image filename="bg2.jpg"  /></Slider>
+                                <Slider className="slider slide-3"><Image filename="bg3.jpg"  /></Slider>
+                                <Slider className="slider slide-4"><Image filename="bg4.jpg"  /></Slider>
 
                         </Wrapper>
                 )
