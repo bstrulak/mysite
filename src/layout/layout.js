@@ -6,11 +6,6 @@ const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    height: 100vh;
-    background-image: url("../images/background/background.jpg");
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
     overflow-x: hidden;
   }
   

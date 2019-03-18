@@ -17,6 +17,7 @@ export default class Menu extends React.Component {
         render() {
                 const Header = styled.header`
                         position: fixed;
+                        z-index: 999;
                         background-color: ${({ theme }) => theme.colors.light};
                         color: ${({ theme }) => theme.colors.dark};
                         width: 100%;
