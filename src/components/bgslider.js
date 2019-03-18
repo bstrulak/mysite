@@ -5,6 +5,25 @@ import { theme } from '../utils/theme'
 import Image from './image'
 
 export default class Menu extends React.Component {
+        constructor(props) {
+                super(props)
+                this.state = {
+                        selected: 0,
+                }
+        }
+
+        slideLeft() {
+                const newSelected = (this.state.selected - 1) % 4
+                this.setState({ selected: newSelected < 0 ? 3 : newSelected })
+                console.log(this.state.selected)
+        }
+
+        slideRight() {
+                const newSelected = (this.state.selected + 1) % 4
+                this.setState({ selected: newSelected })
+                console.log(this.state.selected)
+        }
+
         render() {
                 const Wrapper = styled.div`
                         display: block;
@@ -27,26 +46,26 @@ export default class Menu extends React.Component {
                                 margin-left: auto;
                                 margin-right: auto;
                         }
-                        .slide-1{
-                            opacity: 1;
-                            transition: opacity 2s ease-in-out;
-                        }
-        
-                        .slide-2 {
-                            opacity: 0;
-                            transition: opacity 2s ease-in-out;
+                        .slide-1 {
+                                opacity: 1;
+                                transition: opacity 2s ease-in-out;
                         }
 
-                        .slide-3{
-                            opacity: 0;
-                            transition: opacity 2s ease-in-out;
+                        .slide-2 {
+                                opacity: 0;
+                                transition: opacity 2s ease-in-out;
                         }
-        
+
+                        .slide-3 {
+                                opacity: 0;
+                                transition: opacity 2s ease-in-out;
+                        }
+
                         .slide-4 {
-                            opacity: 0;
-                            transition: opacity 2s ease-in-out;
+                                opacity: 0;
+                                transition: opacity 2s ease-in-out;
                         }
-                        
+
                         .slide-radio1:checked ~ .slider-pagination .page1,
                         .slide-radio2:checked ~ .slider-pagination .page2,
                         .slide-radio3:checked ~ .slider-pagination .page3,
@@ -56,21 +75,21 @@ export default class Menu extends React.Component {
                                 background: ${({ theme }) => theme.colors.white};
                         }
                         .slide-radio1:checked ~ .slide-1 {
-                            opacity: 1;
-                            transition: opacity 2s ease-in-out;
-                          }
-                          .slide-radio2:checked ~ .slide-2 {
-                            opacity: 1;
-                            transition: opacity 2s ease-in-out;
-                          }
-                          .slide-radio3:checked ~ .slide-3 {
-                            opacity: 1;
-                            transition: opacity 2s ease-in-out;
-                          }
-                          .slide-radio4:checked ~ .slide-4 {
-                            opacity: 1;
-                            transition: opacity 2s ease-in-out;
-                          }
+                                opacity: 1;
+                                transition: opacity 2s ease-in-out;
+                        }
+                        .slide-radio2:checked ~ .slide-2 {
+                                opacity: 1;
+                                transition: opacity 2s ease-in-out;
+                        }
+                        .slide-radio3:checked ~ .slide-3 {
+                                opacity: 1;
+                                transition: opacity 2s ease-in-out;
+                        }
+                        .slide-radio4:checked ~ .slide-4 {
+                                opacity: 1;
+                                transition: opacity 2s ease-in-out;
+                        }
                 `
 
                 const PaginationLabel = styled.label`
@@ -96,7 +115,7 @@ export default class Menu extends React.Component {
                         padding-left: 20px;
                         padding-right: 20px;
                         display: flex;
-
+                        color: ${({ theme }) => theme.colors.transparent};
                         justify-content: space-between;
 
                         a {
@@ -105,23 +124,22 @@ export default class Menu extends React.Component {
                         }
                 `
                 const Slider = styled.div`
-                width: 100%;
-                position: absolute;
-                left: 0;
-                top: 0;
-                padding: 0;
-                opacity: 1;
-                z-index: 0;
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                align-items: center;
-                justify-content: center;
-                align-content: center;
-                
-                
+                        width: 100%;
+                        height: 100vh;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        padding: 0;
+                        opacity: 1;
+                        z-index: 0;
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: center;
+                        align-content: center;
                 `
-               /* const RespImage = styled(Image)`
+                /* const RespImage = styled(Image)`
                 padding: 0;
                 top: 0;
                 left: 0;
@@ -133,32 +151,76 @@ export default class Menu extends React.Component {
                 width: 100%;
                 `
 */
+
                 return (
                         <Wrapper>
-                                <input type="radio" name="slider" id="slider_1" className="slide-radio1" />
-                                <input type="radio" name="slider" id="slider_2" className="slide-radio2" />
-                                <input type="radio" name="slider" id="slider_3" className="slide-radio3" />
-                                <input type="radio" name="slider" id="slider_4" className="slide-radio4" />
+                                <input
+                                        type="radio"
+                                        name="slider"
+                                        id="slider_1"
+                                        className="slide-radio1"
+                                        key="1"
+                                        defaultChecked={this.state.selected === 0}
+                                />
+                                <input
+                                        type="radio"
+                                        name="slider"
+                                        id="slider_2"
+                                        className="slide-radio2"
+                                        key="2"
+                                        defaultChecked={this.state.selected === 1}
+                                />
+                                <input
+                                        type="radio"
+                                        name="slider"
+                                        id="slider_3"
+                                        className="slide-radio3"
+                                        key="3"
+                                        defaultChecked={this.state.selected === 2}
+                                />
+                                <input
+                                        type="radio"
+                                        name="slider"
+                                        id="slider_4"
+                                        className="slide-radio4"
+                                        key="4"
+                                        defaultChecked={this.state.selected === 3}
+                                />
                                 <div className="slider-pagination">
-                                        <PaginationLabel for="slider_1" className="page1" />
-                                        <PaginationLabel for="slider_2" className="page2" />
-                                        <PaginationLabel for="slider_3" className="page3" />
-                                        <PaginationLabel for="slider_4" className="page4" />
+                                        <PaginationLabel htmlFor="slider_1" className="page1" />
+                                        <PaginationLabel htmlFor="slider_2" className="page2" />
+                                        <PaginationLabel htmlFor="slider_3" className="page3" />
+                                        <PaginationLabel htmlFor="slider_4" className="page4" />
                                 </div>
                                 <SliderArrows>
-                                        <a href="javascript:void(0);" className="slider_left" onClick="myFunction()">
-                                                <FaAngleLeft />
-                                        </a>
-                                        <a href="javascript:void(0);" className="slider_right" onClick="myFunction()">
-                                                <FaAngleRight />
-                                        </a>
+                                        <FaAngleLeft onClick={this.slideLeft.bind(this)} />
+                                        <FaAngleRight onClick={this.slideRight.bind(this)} />
                                 </SliderArrows>
-                                <Slider className="slider slide-1"><Image filename="bg1.jpg"  /></Slider>
-                                <Slider className="slider slide-2"><Image filename="bg2.jpg"  /></Slider>
-                                <Slider className="slider slide-3"><Image filename="bg3.jpg"  /></Slider>
-                                <Slider className="slider slide-4"><Image filename="bg4.jpg"  /></Slider>
-
+                                <Slider className="slider slide-1">
+                                        <Image filename="bg1.jpg" />
+                                </Slider>
+                                <Slider className="slider slide-2">
+                                        <Image filename="bg2.jpg" />
+                                </Slider>
+                                <Slider className="slider slide-3">
+                                        <Image filename="bg3.jpg" />
+                                </Slider>
+                                <Slider className="slider slide-4">
+                                        <Image filename="bg4.jpg" />
+                                </Slider>
                         </Wrapper>
                 )
+        }
+
+        componentDidMount() {
+                this.interval = setInterval(() => {
+                        this.setState({
+                                selected: (this.state.selected + 1) % 4,
+                        })
+                }, 3000)
+        }
+
+        componentWillUnmount() {
+                clearInterval(this.interval)
         }
 }

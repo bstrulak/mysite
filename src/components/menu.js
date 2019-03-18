@@ -6,7 +6,7 @@ import { theme } from '../utils/theme'
 
 export default class Menu extends React.Component {
         state = {
-                showMenu: false,
+                showMenu: true,
         }
 
         togleMenu = () => {
