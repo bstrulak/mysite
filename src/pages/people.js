@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import posed, { PoseGroup } from 'react-pose'
+import posed from 'react-pose'
 import Layout from '../layout/layout'
-import Menu from '../components/menu'
 
 const Box = posed.div({
         visible: {

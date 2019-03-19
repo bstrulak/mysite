@@ -32,22 +32,7 @@ const Image = props => (
                         }
 
                         const imageSizes = image.node.childImageSharp.sizes
-                        return (
-                                <Img
-                                        alt={props.alt}
-                                        sizes={imageSizes}
-                                        style={{
-                                                position: 'absolute',
-                                                top: 0,
-                                                left: 0,
-                                                height: '100%',
-                                                width: '100%',
-                                                objectFit: 'cover !important',
-                                                objectPosition: '0% 0% !important',
-                                                transition: 'opacity 20s !important',
-                                        }}
-                                />
-                        )
+                        return <Img alt={props.alt} sizes={imageSizes} style={props.style} />
                 }}
         />
 )

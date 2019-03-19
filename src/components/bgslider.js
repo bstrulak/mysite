@@ -134,7 +134,19 @@ export default class Menu extends React.Component {
                                 <PoseGroup>
                                         {this.state.selected === 0 ? (
                                                 <Slider key="bg1">
-                                                        <Image filename="bg1.jpg" />
+                                                        <Image
+                                                                filename="bg1.jpg"
+                                                                style={{
+                                                                        position: 'absolute',
+                                                                        top: 0,
+                                                                        left: 0,
+                                                                        height: '100%',
+                                                                        width: '100%',
+                                                                        objectFit: 'cover !important',
+                                                                        objectPosition: '0% 0% !important',
+                                                                        transition: 'opacity 20s !important',
+                                                                }}
+                                                        />
                                                 </Slider>
                                         ) : (
                                                 ''
@@ -142,7 +154,19 @@ export default class Menu extends React.Component {
 
                                         {this.state.selected === 1 ? (
                                                 <Slider key="bg2">
-                                                        <Image filename="bg2.jpg" />
+                                                        <Image
+                                                                filename="bg2.jpg"
+                                                                style={{
+                                                                        position: 'absolute',
+                                                                        top: 0,
+                                                                        left: 0,
+                                                                        height: '100%',
+                                                                        width: '100%',
+                                                                        objectFit: 'cover !important',
+                                                                        objectPosition: '0% 0% !important',
+                                                                        transition: 'opacity 20s !important',
+                                                                }}
+                                                        />
                                                 </Slider>
                                         ) : (
                                                 ''
@@ -150,7 +174,19 @@ export default class Menu extends React.Component {
 
                                         {this.state.selected === 2 ? (
                                                 <Slider key="bg3">
-                                                        <Image filename="bg3.jpg" />
+                                                        <Image
+                                                                filename="bg3.jpg"
+                                                                style={{
+                                                                        position: 'absolute',
+                                                                        top: 0,
+                                                                        left: 0,
+                                                                        height: '100%',
+                                                                        width: '100%',
+                                                                        objectFit: 'cover !important',
+                                                                        objectPosition: '0% 0% !important',
+                                                                        transition: 'opacity 20s !important',
+                                                                }}
+                                                        />
                                                 </Slider>
                                         ) : (
                                                 ''
@@ -158,7 +194,19 @@ export default class Menu extends React.Component {
 
                                         {this.state.selected === 3 ? (
                                                 <Slider key="bg4">
-                                                        <Image filename="bg4.jpg" />
+                                                        <Image
+                                                                filename="bg4.jpg"
+                                                                style={{
+                                                                        position: 'absolute',
+                                                                        top: 0,
+                                                                        left: 0,
+                                                                        height: '100%',
+                                                                        width: '100%',
+                                                                        objectFit: 'cover !important',
+                                                                        objectPosition: '0% 0% !important',
+                                                                        transition: 'opacity 20s !important',
+                                                                }}
+                                                        />
                                                 </Slider>
                                         ) : (
                                                 ''

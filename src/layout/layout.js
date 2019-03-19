@@ -1,6 +1,8 @@
 import React from 'react'
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { theme } from '../utils/theme'
+import 'typeface-oswald'
+import 'typeface-merriweather'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -12,16 +14,15 @@ const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
   }
-`
 
-const StyledWrapper = styled.div`
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: ${({ theme }) => theme.colors.light};
-        position: relative;
+  a {
+          color: ${({theme}) => theme.colors.orange};
+          text-decoration: none;
+          :hover {
+                  text-decoration: underline;
+          }
+          font-size: 1.1rem;
+  }
 `
 
 const Layout = ({ children }) => (
