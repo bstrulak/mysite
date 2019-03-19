@@ -51,14 +51,18 @@ const SliderArrows = styled.div`
 const PosedSlider = posed.div({
         enter: {
                 opacity: 1,
+                scale: 1.05,
                 transition: {
-                        duration: 5000,
+                        default: { duration: 2500 },
+                        scale: { duration: 15000 },
                 },
         },
         exit: {
                 opacity: 0,
+                scale: 1,
                 transition: {
-                        duration: 5000,
+                        default: { duration: 2500 },
+                        scale: { duration: 15000 },
                 },
         },
 })
