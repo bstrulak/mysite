@@ -1,4 +1,9 @@
 module.exports = {
+        siteMetadata: {
+                  title: "Bogusz Strulak - photography portfolio",
+                  description: "This is where I share my pictures.",
+                },
+        
         plugins: [
                 {
                         resolve: `gatsby-plugin-typography`,

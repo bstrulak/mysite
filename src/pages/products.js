@@ -10,7 +10,7 @@ export default () => (
         <Header section="Contact" />
         </Menu>
                 <h1>Gallery</h1>
-                <Gallery props="people"></Gallery>
+                <Gallery props="products"></Gallery>
                 <Footer></Footer>
         </Layout>
 )
