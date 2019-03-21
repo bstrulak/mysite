@@ -35,7 +35,7 @@ export default class Menu extends React.Component {
                 
                 const TopMenu = styled.div`
                         position: fixed;
-                        z-index: 999;
+                        z-index: 10;
                         background-color: ${({ theme }) => theme.colors.white};
                         color: ${({ theme }) => theme.colors.dark};
                         width: 100%;
