@@ -7,9 +7,7 @@ import { FaAngleLeft, FaAngleRight, FaTimes } from 'react-icons/fa'
 
 const LightboxContainer = styled.div`
   margin: 1.8rem auto;
-        padding-right: 5px;
-        padding-left: 5px;
-        max-width: 80vw; 
+       
         -webkit-columns: 15em;
         columns: 250px 3;
         column-gap: 0.8em;
@@ -36,7 +34,7 @@ const PreviewButton = styled.button`
   width:100%;
 `
 const Overlay = styled(DialogOverlay)`
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.85);
   position: fixed;
   top: 0;
   right: 0;

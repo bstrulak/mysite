@@ -9,9 +9,9 @@ const Wrapper = styled.div`
         height: 40vh;
 `
 
-export default props => (
+export default ( {props} ) => (
         <Wrapper>
-                <Image filename="headers/header.jpg" style={{
+                <Image filename={props} style={{
                                                                         height: '100%',
                                                                         width: '100%',
                                                                         objectFit: 'cover !important',

@@ -4,13 +4,25 @@ import Footer from '../components/footer'
 import Gallery from '../components/gallery'
 import Menu     from '../components/menu'
 import Header from '../components/header'
+import Images from  '../components/images'
+import styled from "styled-components"
+
+const Container = styled.div`
+        padding-right: 5px;
+        padding-left: 5px;
+        max-width: 80vw; 
+        margin: auto;
+`
 
 export default () => (
         <Layout><Menu>
-        <Header section="Contact" />
+        <Header props="headers/header_p.jpg" />
         </Menu>
-                <h1>Gallery</h1>
-                <Gallery props="products"></Gallery>
+        <Container>
+                <h2>Product Photography</h2>
+                <hr></hr>
+                <Images props="products"></Images>
                 <Footer></Footer>
+                </Container>
         </Layout>
 )

@@ -1,8 +1,11 @@
 module.exports = {
         siteMetadata: {
-                  title: "Bogusz Strulak - photography portfolio",
+                  title: "People, Product and Travel Photography portfolio",
                   description: "This is where I share my pictures.",
-                },
+                  titleTemplate: "%s by Bogusz Strulak",
+                  url: "http://boguszstrulak.com", // No trailing slash allowed!
+                  
+                    },
         
         plugins: [
                 {
@@ -11,6 +14,7 @@ module.exports = {
                                 pathToConfigModule: `${__dirname}/src/utils/typography`,
                         },
                 },
+                `gatsby-plugin-react-helmet`,
                 `gatsby-plugin-styled-components`,
                 `gatsby-transformer-sharp`,
                 `gatsby-plugin-sharp`,
@@ -21,29 +25,13 @@ module.exports = {
                                 path: `${__dirname}/src/data/images`,
                         },
                 },
-                /* {
-                        resolve: `gatsby-plugin-prefetch-google-fonts`,
-                        options: {
-                                fonts: [
-                                        {
-                                                family: `Oswald`,
-                                                subsets: [`latin`],
-                                                variants: [`400`, `500`],
-                                        },
-                                        {
-                                                family: `Rosario`,
-                                                variants: [`700`],
-                                        },
-                                        {
-                                                family: `Crimson Text`,
-                                                variants: [`400`, `400i`, `600`],
-                                        },
-                                        {
-                                                family: `Merriweather Sans`,
-                                                variants: [`400`, `700`],
-                                        },
-                                ],
-                        },
-                }, */
+                {
+                        resolve: `gatsby-plugin-google-analytics`,
+                                options: {
+                                        // replace "UA-XXXXXXXXX-X" with your own Tracking ID
+                                        trackingId: "UA-135842330-1",
+                                },
+                },
+                
         ],
 }

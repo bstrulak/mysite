@@ -14,17 +14,13 @@ const Container = styled.div`
         max-width: 800px;    
 `
 
-const H2 = styled.h2`
-        font-size: 2rem;
-        font-weight: 400;
-        margin: 0;
-`
+
 const HR = styled.hr`
     max-width: 4rem;
     border-width: .2rem;
-    border-color: #f4623a;
+    border-color: ${({theme}) => theme.colors.orange};;;
     border: 0;
-    border-top: 2px solid  #f4623a;
+    border-top: 2px solid  ${({theme}) => theme.colors.orange};;
     margin: 5px auto 10px auto;
     
 `
@@ -66,17 +62,17 @@ const EmailWrapper = styled.div`
 
 const EmailIcon = styled(FaEnvelope)`
         font-size: 5.5rem;
-        color: #6c757d;
+        color: ${({theme}) => theme.colors.muted};
         margin: 10px;
 `
 export default () => (
         <Layout>
                 <Menu>
-                        <Header section="Contact" />
+                        <Header props="headers/header.jpg" />
                         </Menu>
                         <Container>
                                 <div style={{textAlign: 'center'}}>
-                                        <H2>Contact me</H2>
+                                        <h2>Contact me</h2>
                                         <HR />
                                         <Muted>Send me an email and I will get back to you as soon as possible!</Muted>
                                 </div>
