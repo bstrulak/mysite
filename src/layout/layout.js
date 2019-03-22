@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-          color: ${({theme}) => theme.colors.orange};
+          color: ${ ({ theme }) => theme.colors.orange };
           text-decoration: none;
           :hover {
                   text-decoration: underline;
@@ -40,13 +40,13 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const Layout = ({ children }) => (
-        
-        <ThemeProvider theme={theme}>
+
+  <ThemeProvider theme={theme}>
                 <><SEO></SEO>
                         <GlobalStyle />
                         {children}
                 </>
-        </ThemeProvider>
+  </ThemeProvider>
 )
 
 export default Layout

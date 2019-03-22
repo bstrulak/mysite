@@ -1,10 +1,10 @@
-import React from "react"
-import { Helmet } from "react-helmet"
-import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
-import favicon16 from "../data/images/favicon16.png"
-import favicon32 from "../data/images/favicon32.png"
-import favicon64 from "../data/images/favicon64.png"
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import PropTypes from 'prop-types'
+import { StaticQuery, graphql } from 'gatsby'
+import favicon16 from '../data/images/favicon16.png'
+import favicon32 from '../data/images/favicon32.png'
+import favicon64 from '../data/images/favicon64.png'
 
 const SEO = ({ title, description, pathname, article }) => (
   <StaticQuery
@@ -22,7 +22,7 @@ const SEO = ({ title, description, pathname, article }) => (
       const seo = {
         title: title || defaultTitle,
         description: description || defaultDescription,
-        url: `${siteUrl}${pathname || "/"}`,
+        url: `${ siteUrl }${ pathname || '/' }`,
       }
 
       return (
@@ -38,7 +38,7 @@ const SEO = ({ title, description, pathname, article }) => (
             <link rel="icon" type="image/png" sizes="16x16" href={favicon16} />
             <link rel="icon" type="image/png" sizes="32x32" href={favicon32} />
             <link rel="shortcut icon" type="image/png" href={favicon32} />
-            </Helmet>
+          </Helmet>
         </>
       )
     }}

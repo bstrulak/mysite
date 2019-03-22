@@ -26,14 +26,14 @@ const SliderPagination = styled.div`
         right: 0;
         margin-left: auto;
         margin-right: auto;
-        color: ${({ theme }) => theme.colors.transparent};
+        color: ${ ({ theme }) => theme.colors.transparent };
         font-size: 1.7em;
 `
 
 const PaginationLabel = styled.label`
         display: inline-block;
         margin: 0 3px;
-        color: ${props => (props.selected ? theme.colors.white : theme.colors.transparent)};
+        color: ${ props => (props.selected ? theme.colors.white : theme.colors.transparent) };
 `
 const SliderArrows = styled.div`
         position: absolute;
@@ -44,27 +44,27 @@ const SliderArrows = styled.div`
         padding-left: 20px;
         padding-right: 20px;
         display: flex;
-        color: ${({ theme }) => theme.colors.transparent};
+        color: ${ ({ theme }) => theme.colors.transparent };
         justify-content: space-between;
 `
 
 const PosedSlider = posed.div({
-        enter: {
-                opacity: 1,
-                scale: 1.05,
-                transition: {
-                        default: { duration: 2500 },
-                        scale: { duration: 15000 },
-                },
-        },
-        exit: {
-                opacity: 0,
-                scale: 1,
-                transition: {
-                        default: { duration: 2500 },
-                        scale: { duration: 15000 },
-                },
-        },
+  enter: {
+    opacity: 1,
+    scale: 1.05,
+    transition: {
+      default: { duration: 2500 },
+      scale: { duration: 15000 },
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 1,
+    transition: {
+      default: { duration: 2500 },
+      scale: { duration: 15000 },
+    },
+  },
 })
 const Slider = styled(PosedSlider)`
         width: 100%;
@@ -76,143 +76,143 @@ const Slider = styled(PosedSlider)`
         z-index: 0;
 `
 export default class Menu extends React.Component {
-        constructor(props) {
-                super(props)
-                this.state = {
-                        selected: 0,
-                }
-        }
+  constructor (props) {
+    super(props)
+    this.state = {
+      selected: 0,
+    }
+  }
 
-        slideLeft() {
-                const newSelected = (this.state.selected - 1) % 4
-                this.setState({ selected: newSelected < 0 ? 3 : newSelected })
-        }
+  slideLeft () {
+    const newSelected = (this.state.selected - 1) % 4
+    this.setState({ selected: newSelected < 0 ? 3 : newSelected })
+  }
 
-        slideRight() {
-                const newSelected = (this.state.selected + 1) % 4
-                this.setState({ selected: newSelected })
-        }
+  slideRight () {
+    const newSelected = (this.state.selected + 1) % 4
+    this.setState({ selected: newSelected })
+  }
 
-        slidePage(page) {
-                this.setState({ selected: page })
-        }
+  slidePage (page) {
+    this.setState({ selected: page })
+  }
 
-        componentDidMount() {
-                this.interval = setInterval(() => {
-                        this.setState({
-                                selected: (this.state.selected + 1) % 4,
-                        })
-                }, 10000)
-        }
+  componentDidMount () {
+    this.interval = setInterval(() => {
+      this.setState({
+        selected: (this.state.selected + 1) % 4,
+      })
+    }, 10000)
+  }
 
-        componentWillUnmount() {
-                clearInterval(this.interval)
-        }
+  componentWillUnmount () {
+    clearInterval(this.interval)
+  }
 
-        render() {
-                return (
-                        <Wrapper>
-                                <SliderPagination>
-                                        <PaginationLabel selected={this.state.selected === 0}>
-                                                <FaMinus onClick={this.slidePage.bind(this, 0)} />
-                                        </PaginationLabel>
-                                        <PaginationLabel selected={this.state.selected === 1}>
-                                                <FaMinus onClick={this.slidePage.bind(this, 1)} />
-                                        </PaginationLabel>
-                                        <PaginationLabel selected={this.state.selected === 2}>
-                                                <FaMinus onClick={this.slidePage.bind(this, 2)} />
-                                        </PaginationLabel>
-                                        <PaginationLabel selected={this.state.selected === 3}>
-                                                <FaMinus onClick={this.slidePage.bind(this, 3)} />
-                                        </PaginationLabel>
-                                </SliderPagination>
+  render () {
+    return (
+      <Wrapper>
+        <SliderPagination>
+          <PaginationLabel selected={this.state.selected === 0}>
+            <FaMinus onClick={this.slidePage.bind(this, 0)} />
+          </PaginationLabel>
+          <PaginationLabel selected={this.state.selected === 1}>
+            <FaMinus onClick={this.slidePage.bind(this, 1)} />
+          </PaginationLabel>
+          <PaginationLabel selected={this.state.selected === 2}>
+            <FaMinus onClick={this.slidePage.bind(this, 2)} />
+          </PaginationLabel>
+          <PaginationLabel selected={this.state.selected === 3}>
+            <FaMinus onClick={this.slidePage.bind(this, 3)} />
+          </PaginationLabel>
+        </SliderPagination>
 
-                                <SliderArrows>
-                                        <FaAngleLeft onClick={this.slideLeft.bind(this)} />
-                                        <FaAngleRight onClick={this.slideRight.bind(this)} />
-                                </SliderArrows>
-                                <PoseGroup>
-                                        {this.state.selected === 0 ? (
-                                                <Slider key="bg1">
-                                                        <Image
-                                                                filename="bg1.jpg"
-                                                                style={{
-                                                                        position: 'absolute',
-                                                                        top: 0,
-                                                                        left: 0,
-                                                                        height: '100%',
-                                                                        width: '100%',
-                                                                        objectFit: 'cover !important',
-                                                                        objectPosition: '0% 0% !important',
-                                                                        transition: 'opacity 20s !important',
-                                                                }}
-                                                        />
-                                                </Slider>
-                                        ) : (
-                                                ''
-                                        )}
+        <SliderArrows>
+          <FaAngleLeft onClick={this.slideLeft.bind(this)} />
+          <FaAngleRight onClick={this.slideRight.bind(this)} />
+        </SliderArrows>
+        <PoseGroup>
+          {this.state.selected === 0 ? (
+            <Slider key="bg1">
+              <Image
+                filename="bg1.jpg"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  height: '100%',
+                  width: '100%',
+                  objectFit: 'cover !important',
+                  objectPosition: '0% 0% !important',
+                  transition: 'opacity 20s !important',
+                }}
+              />
+            </Slider>
+          ) : (
+            ''
+          )}
 
-                                        {this.state.selected === 1 ? (
-                                                <Slider key="bg2">
-                                                        <Image
-                                                                filename="bg2.jpg"
-                                                                style={{
-                                                                        position: 'absolute',
-                                                                        top: 0,
-                                                                        left: 0,
-                                                                        height: '100%',
-                                                                        width: '100%',
-                                                                        objectFit: 'cover !important',
-                                                                        objectPosition: '0% 0% !important',
-                                                                        transition: 'opacity 20s !important',
-                                                                }}
-                                                        />
-                                                </Slider>
-                                        ) : (
-                                                ''
-                                        )}
+          {this.state.selected === 1 ? (
+            <Slider key="bg2">
+              <Image
+                filename="bg2.jpg"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  height: '100%',
+                  width: '100%',
+                  objectFit: 'cover !important',
+                  objectPosition: '0% 0% !important',
+                  transition: 'opacity 20s !important',
+                }}
+              />
+            </Slider>
+          ) : (
+            ''
+          )}
 
-                                        {this.state.selected === 2 ? (
-                                                <Slider key="bg3">
-                                                        <Image
-                                                                filename="bg3.jpg"
-                                                                style={{
-                                                                        position: 'absolute',
-                                                                        top: 0,
-                                                                        left: 0,
-                                                                        height: '100%',
-                                                                        width: '100%',
-                                                                        objectFit: 'cover !important',
-                                                                        objectPosition: '0% 0% !important',
-                                                                        transition: 'opacity 20s !important',
-                                                                }}
-                                                        />
-                                                </Slider>
-                                        ) : (
-                                                ''
-                                        )}
+          {this.state.selected === 2 ? (
+            <Slider key="bg3">
+              <Image
+                filename="bg3.jpg"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  height: '100%',
+                  width: '100%',
+                  objectFit: 'cover !important',
+                  objectPosition: '0% 0% !important',
+                  transition: 'opacity 20s !important',
+                }}
+              />
+            </Slider>
+          ) : (
+            ''
+          )}
 
-                                        {this.state.selected === 3 ? (
-                                                <Slider key="bg4">
-                                                        <Image
-                                                                filename="bg4.jpg"
-                                                                style={{
-                                                                        position: 'absolute',
-                                                                        top: 0,
-                                                                        left: 0,
-                                                                        height: '100%',
-                                                                        width: '100%',
-                                                                        objectFit: 'cover !important',
-                                                                        objectPosition: '0% 0% !important',
-                                                                        transition: 'opacity 20s !important',
-                                                                }}
-                                                        />
-                                                </Slider>
-                                        ) : (
-                                                ''
-                                        )}
-                                </PoseGroup>
-                        </Wrapper>
-                )
-        }
+          {this.state.selected === 3 ? (
+            <Slider key="bg4">
+              <Image
+                filename="bg4.jpg"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  height: '100%',
+                  width: '100%',
+                  objectFit: 'cover !important',
+                  objectPosition: '0% 0% !important',
+                  transition: 'opacity 20s !important',
+                }}
+              />
+            </Slider>
+          ) : (
+            ''
+          )}
+        </PoseGroup>
+      </Wrapper>
+    )
+  }
 }

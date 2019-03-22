@@ -5,7 +5,7 @@ import Menu from '../components/menu'
 import Header from '../components/header'
 import Image from '../components/image'
 import Footer from '../components/footer'
-import {FaEnvelope} from 'react-icons/fa'
+import { FaEnvelope } from 'react-icons/fa'
 
 const Container = styled.div`
         margin: 1.8rem auto;
@@ -14,19 +14,18 @@ const Container = styled.div`
         max-width: 800px;    
 `
 
-
 const HR = styled.hr`
     max-width: 4rem;
     border-width: .2rem;
-    border-color: ${({theme}) => theme.colors.orange};;;
+    border-color: ${ ({ theme }) => theme.colors.orange };;;
     border: 0;
-    border-top: 2px solid  ${({theme}) => theme.colors.orange};;
+    border-top: 2px solid  ${ ({ theme }) => theme.colors.orange };;
     margin: 5px auto 10px auto;
     
 `
 const Muted = styled.p`
         font-size: 0.9rem;
-        color: ${({theme}) => theme.colors.muted};
+        color: ${ ({ theme }) => theme.colors.muted };
 `
 const Contact = styled.div`
        display: flex;
@@ -42,7 +41,7 @@ const ImageWrapper = styled.div`
         max-width: 250px;
         min-width: 250px;
         padding: .25rem;
-        border: 1px solid ${({theme}) => theme.colors.bgresp};;
+        border: 1px solid ${ ({ theme }) => theme.colors.bgresp };;
         border-radius: .25rem;
         height: auto;
 `
@@ -62,32 +61,30 @@ const EmailWrapper = styled.div`
 
 const EmailIcon = styled(FaEnvelope)`
         font-size: 5.5rem;
-        color: ${({theme}) => theme.colors.muted};
+        color: ${ ({ theme }) => theme.colors.muted };
         margin: 10px;
 `
 export default () => (
-        <Layout>
-                <Menu>
-                        <Header props="headers/header.jpg" />
-                        </Menu>
-                        <Container>
-                                <div style={{textAlign: 'center'}}>
-                                        <h2>Contact me</h2>
-                                        <HR />
-                                        <Muted>Send me an email and I will get back to you as soon as possible!</Muted>
-                                </div>
-                                <Contact>
-                                        <ImageWrapper>
-                                               <Image filename="bogusz strulak.jpg"/>
-                                        </ImageWrapper>
-                                        <EmailWrapper>
-                                                <EmailIcon></EmailIcon>
-                                                <a className="d-block" href="mailto:bstrulak@gmail.com">
-                                                        bstrulak@gmail.com
-                                                </a>
-                                        </EmailWrapper>
-                                </Contact>
-                        </Container>
-                <Footer></Footer>
-        </Layout>
+  <Layout>
+    <Menu>
+      <Header props="headers/header.jpg" />
+    </Menu>
+    <Container>
+      <div style={{ textAlign: 'center' }}>
+        <h2>Contact me</h2>
+        <HR />
+        <Muted>Send me an email and I will get back to you as soon as possible!</Muted>
+      </div>
+      <Contact>
+        <ImageWrapper>
+          <Image filename="bogusz strulak.jpg"/>
+        </ImageWrapper>
+        <EmailWrapper>
+          <EmailIcon></EmailIcon>
+          <a className="d-block" href="mailto:bstrulak@gmail.com">bstrulak@gmail.com</a>
+        </EmailWrapper>
+      </Contact>
+    </Container>
+    <Footer></Footer>
+  </Layout>
 )
