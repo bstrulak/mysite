@@ -58,7 +58,7 @@ workflows:
   version: 2
   front-backend:
     jobs:
-      - pre-build:
+      - pre-build
       - gatsby-deploy-test:
           requires:
             - pre-build
