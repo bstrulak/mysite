@@ -27,14 +27,6 @@ jobs:
           root: ~/mysite
           paths:
             - node_modules
-  lint:
-    working_directory: ~/mysite
-    <<: *defaults
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/mysite
-      - run: npm run lint
 
   gatsby-deploy:
     working_directory: ~/mysite
@@ -58,12 +50,9 @@ workflows:
             branches:
               only:
                 - master
-      - lint:
-          requires:
-            - pre-build
       - gatsby-deploy:
           requires:
-            - lint
+            - pre-build
           filters:
             branches:
               only:
