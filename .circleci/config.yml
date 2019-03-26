@@ -1,0 +1,80 @@
+defaults: &defaults
+  docker:
+    - image: circleci/node:10
+
+version: 2
+jobs:
+  pre-build:
+    working_directory: ~/mysite
+    <<: *defaults
+    steps:
+      - checkout:
+          path: ~/mysite/
+      - attach_workspace:
+          at: ~/mysite/
+
+      - restore_cache:
+          key: node-v2-{{ checksum "package.json" }}-{{ arch }}
+
+      - run: npm install
+
+      - save_cache:
+          key: node-v2-{{ checksum "package.json" }}-{{ arch }}
+          paths:
+            - node_modules
+
+      - persist_to_workspace:
+          root: ~/mysite
+          paths:
+            - node_modules
+
+  gatsby-deploy-test:
+    working_directory: ~/mysite
+    <<: *defaults
+    steps:
+      - checkout:
+          path: ~/mysite/
+      - attach_workspace:
+          at: ~/mysite
+      - run:
+          command: |
+            sudo apt-get -y -qq install awscli
+            CI=false npm run build:ci
+            aws s3 sync public/ s3://preview.boguszstrulak.com  --delete --region eu-central-1
+
+  gatsby-deploy-production:
+    working_directory: ~/mysite
+    <<: *defaults
+    steps:
+      - checkout:
+          path: ~/mysite/
+      - attach_workspace:
+          at: ~/mysite
+      - run:
+          command: |
+            sudo apt-get -y -qq install awscli
+            CI=false npm run build:ci
+            aws s3 sync public/ s3://boguszstrulak.com  --delete --region eu-central-1
+workflows:
+  version: 2
+  front-backend:
+    jobs:
+      - pre-build:
+          filters:
+            branches:
+              only:
+                - master
+      - gatsby-deploy-test:
+          requires:
+            - pre-build
+          filters:
+            branches:
+              only:
+                - develop
+      - gatsby-deploy-production:
+          requires:
+            - pre-build
+          filters:
+            branches:
+              only:
+                - master
