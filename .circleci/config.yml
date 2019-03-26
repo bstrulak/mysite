@@ -1,6 +1,6 @@
 defaults: &defaults
   docker:
-    - image: circleci/node:8
+    - image: circleci/node:10
 
 version: 2
 jobs:
@@ -39,7 +39,7 @@ jobs:
       - run:
           command: |
             sudo apt-get -y -qq install awscli
-            CI=false npm run build:ci
+            gatsby build
             aws s3 sync public/ s3://preview.boguszstrulak.com  --delete
 workflows:
   version: 2
