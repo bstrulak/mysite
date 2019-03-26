@@ -39,7 +39,7 @@ jobs:
       - run:
           command: |
             sudo apt-get -y -qq install awscli
-            gatsby build
+            CI=false npm run build:ci
             aws s3 sync public/ s3://preview.boguszstrulak.com  --delete
 workflows:
   version: 2
