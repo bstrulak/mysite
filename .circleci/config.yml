@@ -28,7 +28,7 @@ jobs:
           paths:
             - node_modules
 
-  gatsby-deploy:
+  gatsby-deploy-test:
     working_directory: ~/mysite
     <<: *defaults
     steps:
@@ -41,6 +41,20 @@ jobs:
             sudo apt-get -y -qq install awscli
             CI=false npm run build:ci
             aws s3 sync public/ s3://preview.boguszstrulak.com  --delete --region eu-central-1
+
+  gatsby-deploy-production:
+    working_directory: ~/mysite
+    <<: *defaults
+    steps:
+      - checkout:
+          path: ~/mysite/
+      - attach_workspace:
+          at: ~/mysite
+      - run:
+          command: |
+            sudo apt-get -y -qq install awscli
+            CI=false npm run build:ci
+            aws s3 sync public/ s3://boguszstrulak.com  --delete --region eu-central-1
 workflows:
   version: 2
   front-backend:
@@ -50,7 +64,14 @@ workflows:
             branches:
               only:
                 - master
-      - gatsby-deploy:
+      - gatsby-deploy-test:
+          requires:
+            - pre-build
+          filters:
+            branches:
+              only:
+                - test
+      - gatsby-deploy-production:
           requires:
             - pre-build
           filters:
