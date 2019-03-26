@@ -44,7 +44,6 @@ jobs:
 
   gatsby-deploy-production:
     working_directory: ~/mysite
-    <<: *defaults
     steps:
       - checkout:
           path: ~/mysite/
@@ -60,10 +59,6 @@ workflows:
   front-backend:
     jobs:
       - pre-build:
-          filters:
-            branches:
-              only:
-                - master
       - gatsby-deploy-test:
           requires:
             - pre-build
