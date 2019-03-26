@@ -6,7 +6,8 @@ version: 2
 jobs:
   pre-build:
     working_directory: ~/mysite
-    <<: *defaults
+    docker:
+      - image: circleci/node:10
     steps:
       - checkout:
           path: ~/mysite/
@@ -30,7 +31,8 @@ jobs:
 
   gatsby-deploy-test:
     working_directory: ~/mysite
-    <<: *defaults
+    docker:
+      - image: circleci/node:10
     steps:
       - checkout:
           path: ~/mysite/
@@ -44,6 +46,8 @@ jobs:
 
   gatsby-deploy-production:
     working_directory: ~/mysite
+    docker:
+      - image: circleci/node:10
     steps:
       - checkout:
           path: ~/mysite/
