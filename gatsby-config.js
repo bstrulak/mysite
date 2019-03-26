@@ -1,3 +1,4 @@
+
 module.exports = {
   siteMetadata: {
     title: 'People, Product and Travel Photography portfolio',
@@ -35,9 +36,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: 'www.boguszstrulak.com',
-        protocol: 'http',
-        hostname: 'www.boguszstrulak.com',
+        bucketName: 'preview.boguszstrulak.com',
+        protocol: 'https',
+        hostname: 'preview.boguszstrulak.com',
+        acl: null,
       },
     },
   ],

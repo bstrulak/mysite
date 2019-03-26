@@ -1,0 +1,70 @@
+defaults: &defaults
+  docker:
+    - image: circleci/node:8
+
+version: 2
+jobs:
+  pre-build:
+    working_directory: ~/mysite
+    <<: *defaults
+    steps:
+      - checkout:
+          path: ~/mysite/
+      - attach_workspace:
+          at: ~/mysite/
+
+      - restore_cache:
+          key: node-v2-{{ checksum "package.json" }}-{{ arch }}
+
+      - run: npm install
+
+      - save_cache:
+          key: node-v2-{{ checksum "package.json" }}-{{ arch }}
+          paths:
+            - node_modules
+
+      - persist_to_workspace:
+          root: ~/mysite
+          paths:
+            - node_modules
+  lint:
+    working_directory: ~/mysite
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/mysite
+      - run: npm run lint
+
+  gatsby-deploy:
+    working_directory: ~/mysite
+    <<: *defaults
+    steps:
+      - checkout:
+          path: ~/mysite/
+      - attach_workspace:
+          at: ~/mysite
+      - run:
+          command: |
+            sudo apt-get -y -qq install awscli
+            CI=false npm run build:ci
+            aws s3 sync public/ s3://preview.boguszstrulak.com  --delete
+workflows:
+  version: 2
+  front-backend:
+    jobs:
+      - pre-build:
+          filters:
+            branches:
+              only:
+                - master
+      - lint:
+          requires:
+            - pre-build
+      - gatsby-deploy:
+          requires:
+            - lint
+          filters:
+            branches:
+              only:
+                - master
