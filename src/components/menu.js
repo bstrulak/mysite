@@ -162,9 +162,9 @@ export default class Menu extends React.Component {
                     <ListItem>
                       <MenuLink to="/products">Products</MenuLink>
                     </ListItem>
-                    {/*  <ListItem>
+                    <ListItem>
                       <MenuLink to="/blog">Blog</MenuLink>
-                  </ListItem> */}
+                    </ListItem>
                     <ListItem>
                       <MenuLink to="/contact">Contact</MenuLink>
                     </ListItem>
