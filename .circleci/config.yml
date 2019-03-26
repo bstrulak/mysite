@@ -39,8 +39,8 @@ jobs:
       - run:
           command: |
             sudo apt-get -y -qq install awscli
-            CI=false npm run build:ci
-            aws s3 sync public/ s3://preview.boguszstrulak.com  --delete
+            CI=false npm run build:
+            aws s3 sync public/ s3://preview.boguszstrulak.com  --delete --region eu-central-1
 workflows:
   version: 2
   front-backend:
