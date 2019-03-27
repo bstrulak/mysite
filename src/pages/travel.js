@@ -15,8 +15,8 @@ const Container = styled.div`
 `
 
 export default () => (
-  <Layout><Menu>
-    <Header props="headers/header.jpg" />
+  <Layout><Menu onTop="false">
+    <Header />
   </Menu>
   <Container>
     <h2>Travel Photography</h2>

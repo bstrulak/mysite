@@ -12,6 +12,10 @@ export default class Menu extends React.Component {
 
   componentDidMount () {
     window.addEventListener('scroll', this.handleScroll)
+    if (this.props.onTop === 'false') {
+      this.setState({ onTop: false })
+    }
+    console.log(this.state)
   }
 
   componentWillUnmount () {
@@ -19,9 +23,7 @@ export default class Menu extends React.Component {
   }
 
   handleScroll (event) {
-    if (window.pageYOffset === 0) {
-      this.setState({ onTop: true })
-    } else {
+    if (window.pageYOffset != 0) {
       this.setState({ onTop: false })
     }
   }
@@ -162,7 +164,7 @@ export default class Menu extends React.Component {
                     <ListItem>
                       <MenuLink to="/products">Products</MenuLink>
                     </ListItem>
-                    {/*} <ListItem>
+                    {/* } <ListItem>
                       <MenuLink to="/blog">Blog</MenuLink>
                     </ListItem> */}
                     <ListItem>
